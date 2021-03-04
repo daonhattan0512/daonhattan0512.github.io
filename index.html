@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bai 3</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            text-align: center;
+        }
+        
+        #game-board {
+            width: 300px;
+            height: 400px;
+            margin: auto;
+        }
+        
+        .box-game {
+            width: 100px;
+            height: 100px;
+            float: left;
+            border: solid 1px black;
+        }
+        
+        #img-board {
+            width: 600px;
+            height: 200px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        
+        .box-img {
+            width: 100px;
+            height: 100px;
+            float: left;
+            border: solid 1px black;
+        }
+        
+        img {
+            max-width: 100%
+        }
+    </style>
+
+
+    <script>
+        $(document).ready(() => {
+            $('img').click(function() {
+                var angle = (($(this).data('angle') || 0) + 90) % 360;
+
+                $(this).css('transform', 'rotate(' + angle + 'deg)')
+                $(this).data('angle', angle)
+            });
+
+        })
+
+
+
+
+        function startDrag(e) {
+            var d = e.target.id
+            e.dataTransfer.setData('imgId', d)
+        }
+
+
+        function acceptDrag(e, receiver) {
+            if (receiver.childElementCount === 0) {
+                e.preventDefault();
+            }
+
+
+        }
+
+        function okDrag(e) {
+            e.preventDefault();
+            let id = e.dataTransfer.getData('imgID')
+            let imgOk = document.getElementById(id)
+            e.target.appendChild(imgOk)
+        }
+    </script>
+</head>
+
+<body>
+    <h3>Game Xếp Hình</h3>
+    <div id="game-board">
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)"></div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)"></div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)"></div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)"></div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)"></div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)"></div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)"></div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)"></div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)"></div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)"></div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)"></div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)"></div>
+    </div>
+
+    <div id="img-board">
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)">
+            <img src="image/pic1.jpg" id='img1' draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)">
+            <img src="image/pic2.jpg" id='img2' draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)">
+            <img src="image/pic3.jpg" id='img3' draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)">
+            <img src="image/pic4.jpg" id='img4' draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)">
+            <img src="image/pic5.jpg" id='img5' draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)">
+            <img src="image/pic6.jpg" id='img6' draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)">
+            <img src="image/pic7.jpg" id='img7' draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)">
+            <img src="image/pic8.jpg" id='img8' draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)">
+            <img src="image/pic9.jpg" id='img9' draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)">
+            <img src="image/pic10.jpg" id='img10' draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)">
+            <img src="image/pic11.jpg" id='img11' draggable="true" ondragstart="startDrag(event)">
+        </div>
+        <div class="box-img" ondragover="acceptDrag(event,this)" ondrop="okDrag(event)">
+            <img src="image/pic12.jpg" id='img12' draggable="true" ondragstart="startDrag(event)">
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
